@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.intro, .products, .cart, .contact {
+    margin-bottom: 20px;
+}
+
+    
+
+       
+.product-item {
+    
+
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position:relative;
+    bottom: 0;
+    width: 100%;
+}
+.silka{
+    margin-left: 15px;
+    font-size: 20px;
+    color:green;
+    text-decoration: none;
+}
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(45, 231, 45);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
+.category{
+display: inline;
+    text-align: center;
+    
+    
+}
+.cat{
+    text-decoration: none;
+    margin-left: 15px;
+    background-color: #333;
+    color:white;
+    padding: 8px;
+    padding-bottom:5px;
+}
+.login{
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Каталог товаров</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'catalog'%}">Каталог товаров</a></li>
+                <li><a href="{% url 'cart'%}">Корзина</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="products">
+            <div class="login">
+                <a href="{% url 'vxod' %}"><button>войти </button></a>
+                <a href="{% url 'register' %}"><button>регистрация</button></a>
+            </div>
+            <h2>Товары</h2>
+            {% for i in category%}
+            <div class="category">
+            
+               <a class="cat" href="{% url 'catalog' i.id%}">{{i.name}} </a>
+            </div>
+            {%endfor%}
+            
+            {% for el in predmet %}
+            <div class="product-item">
+                
+              <img src="{{ el.img.url }}" alt="Продукт 2">
+                <h3>{{el.opisanie}}</h3>
+                <p>{{el.description}}</p>
+                <p>{{el.price}} $</p>
+                <a href="{% url 'cart'%}" class="buy-button">Купить</a>
+                <a href="{% url 'contact' el.id %}"><button class="btn">смотреть</button></a>
+            </div>
+            {%endfor%}
+           
+            <!-- Добавьте больше товаров по аналогии -->
+        </section>
+    </main>
+
+    <footer>
+        <p> 2024 Мой интернет-магазин</p>
+    </footer>
+</body>
+</html>

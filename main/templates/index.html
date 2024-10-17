@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой интернет-магазин</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.intro, .products, .cart, .contact {
+    margin-bottom: 20px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position:relative;
+    bottom: 0;
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать в мой интернет-магазин!</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'catalog'%}">Каталог товаров</a></li>
+                <li><a href="{% url 'cart'%}">Корзина</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h2>Наши лучшие предложения</h2>
+            <p>Ознакомьтесь с нашими новыми продуктами и специальными предложениями!</p>
+        </section>
+        
+        <section class="products">
+            <h2>Популярные товары</h2>
+            <div class="product-item">
+                <img src="{% static 'Images/apple-iphone-x-new-2.jpg'%}" alt="Продукт 1">
+                <h3>Продукт 1</h3>
+                <p>Описание продукта 1.</p>
+                <p>Цена: 1000 руб.</p>
+                <a href="{% url 'cart'%}" class="buy-button">Купить</a>
+            </div>
+            <!-- Добавьте больше товаров по аналогии -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Мой интернет-магазин</p>
+    </footer>
+</body>
+</html>
