@@ -8,3 +8,4 @@ class PredmetAdmin(admin.ModelAdmin):
     list_filter = ['category']
     list_display = ['name', 'price','description']
     
+    list_display = ['name']

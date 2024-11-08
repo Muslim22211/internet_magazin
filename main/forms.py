@@ -7,4 +7,6 @@ class LoginForm(forms.Form):
 
 class Register(LoginForm):
     re_password = forms.CharField()
+
+    
     
